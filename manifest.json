@@ -1,0 +1,16 @@
+{
+  "name": "Soil Mechanics Laboratory",
+  "short_name": "Soil Mechani",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f2937",
+  "icons": [
+    {
+      "src": "/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en"
+}

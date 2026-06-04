@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atterberg Limits Calculator: LL, PL, PI and Casagrande Chart</title>
+<meta name="description" content="Atterberg limits are the backbone of fine-grained soil classification. This calculator takes the (N, w) pairs from the Casagrande cup test to obtain the li">
+<meta name="theme-color" content="#1f2937">
+<link rel="canonical" href="https://soilmechaniclaboratory.org/blog/calculators/atterberg/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Atterberg Limits Calculator: LL, PL, PI and Casagrande Chart">
+<meta property="og:description" content="National soil mechanics laboratory serving UK infrastructure projects. Geotechnical testing, site investigation, and engineering analysis for major urban">
+<meta property="og:url" content="https://soilmechaniclaboratory.org/blog/calculators/atterberg/">
+<meta property="og:site_name" content="Soil Mechanics Laboratory">
+<meta property="og:image" content="https://soilmechaniclaboratory.org/img/muestreo-inalterado-langen-1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Atterberg Limits Calculator: LL, PL, PI and Casagrande Chart">
+<meta name="twitter:description" content="National soil mechanics laboratory serving UK infrastructure projects. Geotechnical testing, site investigation, and engineering analysis for major urban centers.">
+<meta name="twitter:image" content="https://soilmechaniclaboratory.org/img/muestreo-inalterado-langen-1.webp">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230A2540'/%3E%3Cpath d='M14 44 L24 30 L34 38 L44 22 L50 28' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Soil Mechanics Laboratory United Kingdom", "description": "National soil mechanics laboratory serving UK infrastructure projects. Geotechnical testing, site investigation, and engineering analysis for major urban centers.", "url": "https://soilmechaniclaboratory.org/", "areaServed": {"@type": "City", "name": "United Kingdom"}, "address": {"@type": "PostalAddress", "addressLocality": "United Kingdom", "addressCountry": "United Kingdom"}, "email": "contact@soilmechaniclaboratory.org", "priceRange": "$$"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Soil Mechanics Laboratory · Soil Mechanics Laboratory — United Ki", "url": "https://soilmechaniclaboratory.org/", "description": "National soil mechanics laboratory serving UK infrastructure projects. Geotechnical testing, site investigation, and engineering analysis for major urban centers.", "inLanguage": "en", "datePublished": "2026-05-31", "dateModified": "2026-05-31", "isPartOf": {"@type": "WebSite", "url": "https://soilmechaniclaboratory.org/", "name": "Soil Mechanics Laboratory"}}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://soilmechaniclaboratory.org/#organization", "name": "Soil Mechanics Laboratory", "url": "https://soilmechaniclaboratory.org/", "logo": "https://soilmechaniclaboratory.org/img/logo.png", "email": "contact@soilmechaniclaboratory.org", "address": {"@type": "PostalAddress", "addressCountry": "United Kingdom"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.6, "reviewCount": 34, "bestRating": 5, "worstRating": 1}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://soilmechaniclaboratory.org/#website", "name": "Soil Mechanics Laboratory", "url": "https://soilmechaniclaboratory.org/", "inLanguage": "en", "publisher": {"@id": "https://soilmechaniclaboratory.org/#organization"}, "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint", "urlTemplate": "https://soilmechaniclaboratory.org/?s={search_term_string}"}, "query-input": "required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What standards does your soil mechanics laboratory follow?", "acceptedAnswer": {"@type": "Answer", "text": "Our laboratory operates in accordance with British Standards (BS 1377) and Eurocode 7. All testing procedures are accredited under ISO 17025, ensuring compliance with UK regulatory requirements for geotechnical investigations."}}, {"@type": "Question", "name": "How long does a typical soil testing program take?", "acceptedAnswer": {"@type": "Answer", "text": "Standard classification tests such as granulometry and Atterberg limits are completed within 5–7 working days. Advanced triaxial and consolidation tests may require 2–4 weeks, depending on the number of samples and drainage conditions."}}, {"@type": "Question", "name": "Do you provide services for small-scale projects?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, our firm supports projects of all sizes, from residential extensions to major infrastructure. We offer flexible sampling kits and remote consultation to accommodate smaller budgets while maintaining full technical rigor."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://soilmechaniclaboratory.org/equipo/henry-pemberton/#person", "name": "Henry Pemberton", "jobTitle": "Senior Geotechnical Consultant", "image": "https://soilmechaniclaboratory.org/img/headshot_intl_soilmechaniclaboratory-org.webp", "worksFor": {"@type": "Organization", "name": "Soil Mechanics Laboratory", "url": "https://soilmechaniclaboratory.org"}, "url": "https://soilmechaniclaboratory.org/equipo/henry-pemberton/"}</script>
+
+<meta name="layout" content="L6">
+<link rel="preload" as="image" href="img/muestreo-inalterado-langen-1.webp" fetchpriority="high">
+<style>
+
+:root{
+  --primary:#1f2937;
+  --accent:#6366f1;
+  --bg:#f9fafb;
+  --surface:#fff;
+  --text:#111827;
+  --border:#e5e7eb;
+  --muted:#64748b;
+  --font-body:'IBM Plex Sans',-apple-system,sans-serif;
+  --font-h:'IBM Plex Sans',-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);line-height:1.65;color:var(--text);background:var(--bg)}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+/* Prose links — links dentro del contenido principal SIEMPRE visibles (underline + accent) */
+main section.block p a, main section.block li a, .cierre a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    font-weight: 500;
+}
+main section.block p a:hover, main section.block li a:hover, .cierre a:hover {
+    text-decoration-thickness: 2px;
+    color: var(--primary);
+}
+.container{max-width:1400px;margin:0 auto;padding:0 24px}
+header{background:var(--primary);color:#fff;padding:18px 0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+header .container{display:flex;align-items:center;justify-content:space-between;gap:20px}
+header .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+header .brand-link:hover{text-decoration:none}
+header .logo{flex-shrink:0;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3))}
+header .brand-line{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;line-height:1.1}
+header .brand-name{font-family:var(--font-h);font-size:1.18rem;font-weight:700;letter-spacing:.02em;color:#fff}
+header .brand-sep{color:#64748b;font-weight:300}
+header .brand-sub{font-size:.78rem;font-weight:400;color:#cbd5e1;letter-spacing:.02em}
+@media(max-width:560px){header .brand-sep,header .brand-sub{display:none}}
+header .navbar{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+header .nav-link{color:#e2e8f0;padding:8px 14px;border-radius:6px;font-size:.92rem;font-weight:500;transition:background .15s,color .15s;text-decoration:none;background:transparent;border:none;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:4px}
+header .nav-link:hover,header .nav-link[aria-expanded="true"]{background:rgba(255,255,255,.1);color:#fff;text-decoration:none}
+header .nav-dd{position:relative}
+header .dd-arrow{font-size:.7rem;opacity:.8;transition:transform .15s}
+header .nav-link[aria-expanded="true"] .dd-arrow{transform:rotate(180deg)}
+header .dd-menu{position:absolute;top:calc(100% + 6px);left:0;background:#fff;min-width:240px;border-radius:8px;box-shadow:0 8px 28px rgba(0,0,0,.18);padding:6px 0;display:none;z-index:1000;border:1px solid rgba(0,0,0,.06)}
+header .nav-dd.open .dd-menu{display:block}
+header .dd-menu a{display:block;padding:10px 18px;color:#1f2937;font-size:.92rem;text-decoration:none;transition:background .12s}
+header .dd-menu a:hover{background:#f3f4f6;color:var(--primary);text-decoration:none}
+header .dd-menu a{display:flex!important;align-items:center;justify-content:space-between;gap:14px}
+header .hub-badge{display:inline-block;background:color-mix(in srgb, var(--accent) 18%, #fff 82%);color:var(--primary);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:11px;line-height:1.4}
+header .nav-burger{display:none;background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 12px;border-radius:6px;font-size:1.1rem;cursor:pointer}
+@media(max-width:780px){
+  header .container{flex-wrap:wrap}
+  header .nav-burger{display:inline-block}
+  header .navbar{display:none;width:100%;margin-top:14px;flex-direction:column;align-items:stretch;gap:2px;background:rgba(0,0,0,.15);padding:10px;border-radius:8px}
+  body.nav-open header .navbar{display:flex}
+  header .nav-dd{width:100%}
+  header .dd-menu{position:static;box-shadow:none;background:rgba(255,255,255,.04);border:none;padding:0;margin-top:4px}
+  header .dd-menu a{color:#e2e8f0;padding:8px 18px}
+  header .dd-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+}
+.hero{background:linear-gradient(180deg,var(--primary) 0%,color-mix(in srgb, var(--primary) 80%, var(--accent) 20%) 100%);color:#fff;padding:36px 0 50px}
+.hero h1{font-family:var(--font-h);font-size:2.1rem;line-height:1.25;font-weight:700;margin-bottom:12px;max-width:1280px}
+.hero p.subtitle{font-size:1.05rem;color:#cbd5e1;max-width:1100px;margin-bottom:18px}
+.breadcrumb{padding:0 0 14px;font-size:.85rem;color:#cbd5e1;background:transparent;border:none}
+.breadcrumb a{color:#93c5fd;text-decoration:none}
+.breadcrumb a:hover{color:#fff;text-decoration:underline}
+.breadcrumb span{color:#fff;font-weight:500}
+.block{background:var(--surface);border-radius:10px;padding:26px 30px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.04);border:1px solid var(--border);overflow:hidden}
+.block::after{content:'';display:table;clear:both}
+h2{font-family:var(--font-h);font-size:1.45rem;color:var(--primary);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border);font-weight:700}
+h3{font-family:var(--font-h);font-size:1.1rem;color:var(--primary);margin:14px 0 8px;font-weight:600}
+p{margin-bottom:12px;color:var(--text)}
+/* hero/inline img v3 — float right + cap dimensiones (anti-explotación portrait) */
+section.block{overflow:auto}
+section.block .hero-img-wrap{float:right;max-width:340px;width:340px;max-height:280px;margin:6px 0 16px 24px;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10);display:block}
+section.block .hero-img-wrap img{max-width:100%;max-height:280px;width:100%;height:280px;object-fit:cover;display:block;border-radius:10px}
+.inline-img{float:right;max-width:300px;width:300px;max-height:220px;margin:6px 0 18px 20px;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10)}
+.inline-img img{max-width:100%;max-height:220px;width:100%;height:220px;object-fit:cover;display:block;border-radius:10px}
+section.block h2{clear:both;margin-top:0}
+@media (max-width:768px){
+  section.block{overflow:visible}
+  section.block .hero-img-wrap{float:none;width:100%;max-width:100%;max-height:240px;margin:18px auto}
+  section.block .hero-img-wrap img{height:240px;max-height:240px}
+  .inline-img{float:none;width:100%;max-width:100%;max-height:220px;margin:18px auto}
+}
+main img:not([class]){max-width:100%;height:auto}
+@media(max-width:680px){.inline-img{float:none;width:100%;max-width:100%;margin:18px auto}}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem;border-radius:6px;overflow:hidden}
+table th{background:var(--primary);color:#fff;padding:12px 14px;text-align:left;font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.04em}
+table td{padding:10px 14px;border-bottom:1px solid var(--border)}
+table tr:nth-child(even) td{background:color-mix(in srgb, var(--bg) 50%, #f8fafc 50%)}
+.norm-list{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.norm-list li{background:color-mix(in srgb, var(--accent) 8%, #fff 92%);color:var(--primary);padding:8px 14px;border-radius:6px;border-left:3px solid var(--primary);font-family:ui-monospace,monospace;font-size:.92rem}
+.faq details{background:color-mix(in srgb, var(--bg) 60%, #f8fafc 40%);padding:14px 18px;margin-bottom:8px;border-radius:8px;border-left:3px solid var(--primary)}
+.faq summary{font-weight:600;cursor:pointer;color:var(--primary);font-size:1.02rem;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';float:right;font-size:1.4rem;line-height:1;color:var(--muted)}
+.faq details[open] summary::after{content:'−'}
+.faq details[open] p{margin-top:12px;color:var(--text)}
+#mapa-ciudad{height:340px;border-radius:8px;border:1px solid var(--border);z-index:1}
+.sidebar h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px;font-weight:600}
+.sidebar ul{list-style:none}
+.sidebar li{margin-bottom:6px}
+.sidebar a{color:var(--primary);font-size:.93rem;display:block;padding:8px 10px;border-radius:5px;transition:background .12s}
+.sidebar a:hover{background:color-mix(in srgb, var(--accent) 10%, #fff 90%);text-decoration:none}
+.cierre{background:color-mix(in srgb, var(--accent) 8%, #fff 92%);padding:20px 26px;border-radius:8px;border-left:4px solid var(--primary);margin-top:24px;color:var(--text);font-style:italic}
+.author-byline{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--primary);padding:14px 18px;border-radius:8px;display:flex;align-items:center;gap:14px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.author-byline img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border)}
+.author-byline .author-info{flex:1;min-width:0}
+.author-byline .author-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.author-byline .author-name{font-size:1rem;font-weight:700;color:var(--primary);display:block;text-decoration:none;line-height:1.3}
+.author-byline .author-title{font-size:.82rem;color:var(--muted);margin-top:2px}
+.author-byline .author-date{font-size:.72rem;color:var(--muted);text-align:right;line-height:1.5;flex-shrink:0}
+@media(max-width:560px){.author-byline{flex-wrap:wrap}.author-byline .author-date{text-align:left;width:100%;margin-top:8px;border-top:1px solid var(--border);padding-top:8px}}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+.service-card{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:var(--bg);border-radius:8px;border:1px solid var(--border);text-decoration:none;color:var(--primary);transition:transform .15s,box-shadow .15s,border-color .15s}
+.service-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08);border-color:var(--accent);text-decoration:none}
+.service-card .card-title{font-weight:600;font-size:1.02rem}
+.service-card .card-arrow{font-size:1.3rem;color:var(--accent)}
+.sat-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.sat-chip{display:inline-flex;align-items:center;padding:7px 14px;background:color-mix(in srgb, var(--accent) 7%, #fff 93%);border:1px solid var(--border);border-radius:18px;color:var(--primary);font-size:.9rem;text-decoration:none;transition:background .12s,border-color .12s,transform .12s}
+.sat-chip:hover{background:color-mix(in srgb, var(--accent) 14%, #fff 86%);border-color:var(--accent);text-decoration:none;transform:translateY(-1px)}
+.sat-to-hub{display:flex;align-items:center;justify-content:space-between;gap:14px;background:color-mix(in srgb, var(--primary) 6%, #fff 94%);border-left:4px solid var(--primary);padding:14px 22px;border-radius:6px;margin:0 0 22px;font-size:.95rem;flex-wrap:wrap}
+.sat-to-hub-label{color:var(--text)}
+.sat-to-hub-link{color:var(--primary);font-weight:600;text-decoration:none;white-space:nowrap}
+.sat-to-hub-link:hover{text-decoration:underline}
+.cta-block,section.block.cta-block{background:linear-gradient(135deg, var(--primary) 0%, color-mix(in srgb, var(--primary) 70%, var(--accent) 30%) 100%)!important;color:#fff!important;border:none!important;padding:36px 40px!important;text-align:center!important;border-radius:12px!important;box-shadow:0 4px 18px rgba(0,0,0,.12)!important;margin:32px auto!important;border-top:none!important;max-width:760px!important}
+.cta-block .cta-inner{margin:0 auto;max-width:600px;text-align:center}
+@media(max-width:900px){.cta-block,section.block.cta-block{max-width:100%!important}}
+.cta-block h2,section.block.cta-block h2{color:#fff!important;border-bottom:none!important;padding-bottom:0!important;font-size:1.55rem!important;margin-bottom:10px!important;text-shadow:0 1px 2px rgba(0,0,0,.15)!important}
+.cta-block h2::after,section.block.cta-block h2::after{display:none!important;content:none!important}
+.cta-block p,section.block.cta-block p{color:#e2e8f0!important;margin-bottom:18px!important;font-size:1rem!important;max-width:none!important}
+.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.cta-wa,.cta-email{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:transform .12s,box-shadow .12s}
+.cta-wa{background:#25d366;color:#fff}
+.cta-wa:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,211,102,.4);text-decoration:none}
+.cta-email{background:#fff;color:var(--primary)}
+.cta-email:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(255,255,255,.2);text-decoration:none}
+.cta-email-note{font-size:.85rem;color:#cbd5e1;margin-top:8px;margin-bottom:0}
+.cta-email-note a{color:#93c5fd}
+.cta-email-note a:hover{color:#fff}
+/* Cities chips (S4) — internal linking bottom-of-page */
+.city-chips-section{margin:30px auto 24px;max-width:1200px}
+.city-chips-section > h2{font-family:var(--font-h);font-size:1.35rem;color:var(--primary);margin-bottom:18px;padding-bottom:8px;border-bottom:2px solid var(--border);font-weight:700}
+.city-chips-zone{margin-bottom:18px}
+.city-chips-zone:last-child{margin-bottom:0}
+.city-chips-zone-title{font-family:var(--font-h);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-weight:700;border:none;padding:0}
+.city-chips-row{display:flex;flex-wrap:wrap;gap:8px}
+.city-chip{display:inline-flex;align-items:center;padding:7px 14px;background:color-mix(in srgb, var(--accent) 6%, #fff 94%);border:1px solid var(--border);border-radius:18px;color:var(--primary);font-size:.9rem;text-decoration:none;transition:background .12s,border-color .12s,transform .12s,box-shadow .12s;font-weight:500;line-height:1.2;white-space:nowrap}
+.city-chip:hover{background:color-mix(in srgb, var(--accent) 14%, #fff 86%);border-color:var(--accent);color:var(--primary);text-decoration:none;transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+@media(max-width:560px){.city-chip{font-size:.85rem;padding:6px 12px}}
+footer{background:var(--primary);color:#cbd5e1;padding:36px 0;margin-top:50px}
+footer .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;align-items:start}
+footer h4{color:#fff;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+footer p,footer a{color:#cbd5e1;font-size:.88rem;line-height:1.7}
+footer a:hover{color:#fff}
+footer .copyr{grid-column:1/-1;border-top:1px solid color-mix(in srgb, var(--primary) 60%, #fff 40%);padding-top:18px;text-align:center;color:#94a3b8;font-size:.82rem}
+footer .footer-designer-credit{color:#94a3b8;font-size:.78rem;margin-top:8px;font-style:italic}
+
+
+.fw-layout{padding:0}
+.fw-layout main{min-width:0}
+.fw-layout .block{padding:48px max(24px, calc((100% - 1280px) / 2));background:transparent;border:none;border-radius:0;box-shadow:none;margin:0}
+.fw-layout .block > *{max-width:1280px;margin-left:auto;margin-right:auto}
+.fw-layout .block:nth-of-type(odd){background:var(--bg)}
+.fw-layout .block:nth-of-type(even){background:var(--surface)}
+.fw-layout h2{font-size:1.7rem;text-align:center;border-bottom:none;padding-bottom:0;margin-bottom:18px}
+.fw-layout h2::after{content:'';display:block;width:60px;height:3px;background:var(--primary);margin:12px auto 0;border-radius:2px}
+.fw-layout table{max-width:1100px;margin:18px auto}
+.fw-layout .norm-list{justify-content:center}
+.fw-layout details{max-width:1100px;margin:8px auto}
+.fw-layout .author-byline{max-width:1100px;margin:24px auto}
+.fw-layout .cierre{max-width:1100px;margin:32px auto}
+
+</style>
+
+<link rel="stylesheet" href="/calc-scoped.css">
+<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style></head>
+<body>
+<header>
+<div class="container">
+<a class="brand-link" href="/">
+<svg class="logo" width="38" height="38" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="lg901" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--accent)"/>
+      <stop offset="100%" stop-color="var(--primary)"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="10" fill="url(#lg901)"/>
+  <path d="M14 44 L24 30 L34 38 L44 22 L50 28" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="24" cy="30" r="3" fill="#fff"/>
+  <circle cx="34" cy="38" r="3" fill="#fff"/>
+  <circle cx="44" cy="22" r="3" fill="#fff"/>
+</svg>
+<div class="brand-line">
+  <span class="brand-name">Soil Mechanics Laboratory</span>
+  <span class="brand-sep">·</span>
+  <span class="brand-sub">Geotechnical Engineering</span>
+</div>
+</a>
+<nav class="navbar" aria-label="principal">
+<a href="/" class="nav-link">Home</a><a class="nav-link" href="/calculators/">Calculators</a>
+<div class="nav-dd"><button class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services<span class="dd-arrow">▾</span></button><div class="dd-menu" role="menu"><a href="/soil-mechanics-laboratory/" role="menuitem">Soil Mechanics Laboratory</a><a href="/granulometry-atterberg/" role="menuitem">Granulometry & Atterberg</a><a href="/proctor-cbr-testing/" role="menuitem">Proctor & CBR Testing</a><a href="/triaxial-consolidation/" role="menuitem">Triaxial & Consolidation</a></div></div>
+<div class="nav-dd"><button class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Coverage<span class="dd-arrow">▾</span></button><div class="dd-menu" role="menu"><a href="/soil-laboratory-in-glasgow/" role="menuitem" class="hub-main"><strong>Glasgow</strong></a><a href="/soil-laboratory-in-cardiff/" role="menuitem" class="hub-main"><strong>Cardiff</strong></a><a href="/soil-laboratory-in-belfast/" role="menuitem" class="hub-main"><strong>Belfast</strong></a><a href="/soil-laboratory-in-london/" role="menuitem" class="hub-main"><strong>London</strong></a><a href="/soil-laboratory-in-bristol/" role="menuitem" class="hub-main"><strong>Bristol</strong></a><a href="/soil-laboratory-in-birmingham/" role="menuitem" class="hub-main"><strong>Birmingham</strong></a><a href="/soil-laboratory-in-manchester/" role="menuitem" class="hub-main"><strong>Manchester</strong></a><a href="/soil-laboratory-in-leeds/" role="menuitem" class="hub-main"><strong>Leeds</strong></a></div></div>
+<a href="/equipo/henry-pemberton/" class="nav-link">Team</a>
+</nav>
+<button class="nav-burger" aria-label="menú" onclick="document.body.classList.toggle('nav-open')">☰</button>
+</div>
+</header>
+<main>
+<nav aria-label="breadcrumb" style="max-width:900px;margin:1.4rem auto 0;padding:0 1.5rem;font-size:.85rem;color:#64748b"><a href="/" style="color:inherit;text-decoration:none">Home</a> &rsaquo; <span>Atterberg Limits Calculator: LL, PL, PI and Casagrande Chart</span></nav>
+<article class="calc-scope" style="max-width:900px;margin:0 auto;padding:1.5rem">
+<h1>Atterberg Limits Calculator: LL, PL, PI and Casagrande Chart</h1>
+
+<p class="lead">Atterberg limits are the backbone of fine-grained soil classification. This calculator takes the (N, w) pairs from the Casagrande cup test to obtain the liquid limit (LL) by logarithmic interpolation, calculates the plastic limit (PL) as the average of threads, derives the plasticity index (PI), and plots the point (LL, PI) on the Casagrande chart in accordance with BS 1377-2 (+ BS EN ISO 17892-12) and BS 5930. Essential for classifying CL, CH, ML, MH and MH-OH in BS 5930 and AASHTO.</p>
+
+<h2>What are they and when to use them?</h2>
+<p>Atterberg limits define the moisture content at which a fine-grained soil changes state: from liquid to plastic (LL) and from plastic to solid (PL). The difference PI = LL − PL measures the moisture range over which the soil behaves plastically. They apply to the fraction passing the 425 µm sieve and are indispensable for classifying any soil with more than 5% fines, assessing expansiveness, estimating compressibility, controlling clay fills, and defining stabilisation treatments with lime or cement.</p>
+
+<h2>Formulas applied</h2>
+<div class="formulas">
+<p><strong>LL by multipoint method:</strong> plot (log N, w) and interpolate the moisture content at N = 25 blows.</p>
+<p>LL = w₁ + (w₂ − w₁) × (log 25 − log N₁) / (log N₂ − log N₁)</p>
+<p><strong>LL by one-point method:</strong> LL = w × (N/25)^0.121</p>
+<p><strong>PL:</strong> average moisture content of 2-3 threads that crack at 3.2 mm.</p>
+<p><strong>PI:</strong> PI = LL − PL</p>
+<p><strong>A-line (Casagrande):</strong> PI = 0.73 × (LL − 20)</p>
+<p><strong>U-line (Casagrande):</strong> PI = 0.9 × (LL − 8) — theoretical upper limit</p>
+</div>
+
+<div class="calc-split-layout">
+<section class="calc-widget" aria-label="Interactive Atterberg limits calculator">
+<h2>Calculate online</h2>
+<p class="calc-intro">Enter LL and PL to obtain PI, Casagrande classification and plasticity degree.</p>
+<form id="calc-form" novalidate>
+<div class="calc-row">
+<label>Liquid limit LL (%)<input type="number" id="LL" step="0.1" value="46" min="0" max="200" required></label>
+<label>Plastic limit PL (%)<input type="number" id="LP" step="0.1" value="23" min="0" max="100" required></label>
+</div>
+<button type="submit">Calculate PI and chart</button>
+</form>
+<div id="calc-resultado" role="status" aria-live="polite"></div>
+<p class="calc-note">Applies to the fraction passing the 425 µm sieve. NP (non-plastic) when PI &lt; 4 or PL unobtainable. A-line: PI = 0.73·(LL−20); U-line: PI = 0.9·(LL−8).</p>
+</section>
+
+<aside class="visor-normas-aside" aria-label="Applicable standards framework">
+<button type="button" class="visor-mobile-toggle" aria-controls="visor-normas" aria-expanded="false">📖 View standards framework</button>
+<div id="visor-normas" class="visor-normas-panel"></div>
+</aside>
+</div>
+<script src="/widgets/visor-normas.js" data-slug="atterberg"></script>
+<script>
+(function(){var btn=document.querySelector('.visor-mobile-toggle');var panel=document.getElementById('visor-normas');if(!btn||!panel)return;btn.addEventListener('click',function(){var isOpen=panel.classList.toggle('vn-mobile-open');btn.setAttribute('aria-expanded',isOpen?'true':'false');btn.textContent=isOpen?'✕ Close standards framework':'📖 View standards framework';});})();
+</script>
+<style>
+.calc-widget{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1.25rem 1.5rem;margin:2rem 0;font-family:inherit}
+.calc-widget h2{margin:0 0 .5rem;font-size:1.15rem;color:#0f172a;border:0;padding:0}
+.calc-widget .calc-intro{margin:0 0 1rem;font-size:.88rem;color:#475569}
+.calc-widget .calc-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin-bottom:1rem}
+.calc-widget label{display:flex;flex-direction:column;font-size:.82rem;color:#334155;font-weight:600}
+.calc-widget input,.calc-widget select{margin-top:.3rem;padding:.5rem .6rem;border:1px solid #cbd5e1;border-radius:6px;font-size:.92rem;font-family:inherit;background:#fff}
+.calc-widget input:focus,.calc-widget select:focus{outline:2px solid #0f766e;outline-offset:1px}
+.calc-widget button{background:#0f766e;color:#fff;border:0;padding:.6rem 1.4rem;border-radius:6px;font-weight:600;cursor:pointer;font-size:.92rem}
+.calc-widget button:hover{background:#115e59}
+.calc-widget #calc-resultado{margin-top:1rem;padding:.9rem 1rem;background:#fff;border-left:3px solid #0f766e;border-radius:4px;font-size:.92rem;min-height:1em}
+.calc-widget #calc-resultado:empty{display:none}
+.calc-widget #calc-resultado .ok{color:#166534;font-weight:700;font-size:1.02rem;display:block;margin-bottom:.3rem}
+.calc-widget #calc-resultado .err{color:#b91c1c;font-weight:600}
+.calc-widget .calc-note{margin:1rem 0 0;font-size:.78rem;color:#64748b;font-style:italic}
+</style>
+<script>
+(function(){
+var f=document.getElementById('calc-form');if(!f)return;
+f.addEventListener('submit',function(e){
+e.preventDefault();
+var LL=parseFloat(document.getElementById('LL').value);
+var LP=parseFloat(document.getElementById('LP').value);
+var out=document.getElementById('calc-resultado');
+if(!isFinite(LL)||!isFinite(LP)||LL<=0||LP<0){out.innerHTML='<span class="err">Enter positive numeric values.</span>';return;}
+if(LL<=LP){out.innerHTML='<span class="err">LL must be greater than PL.</span>';return;}
+var IP=LL-LP;
+var ipA=0.73*(LL-20);
+var ipU=0.9*(LL-8);
+var altaPlast=LL>=50;
+var sobreA=IP>=ipA;
+var simbolo='',descripcion='';
+if(IP<4){simbolo='ML (NP)';descripcion='Non-plastic silt';}
+else if(IP>=4&&IP<=7&&sobreA){simbolo='CL-ML';descripcion='Shaded zone — silty clay';}
+else if(sobreA){simbolo=altaPlast?'CH':'CL';descripcion=altaPlast?'Clay of high plasticity':'Clay of low plasticity';}
+else{simbolo=altaPlast?'MH':'ML';descripcion=altaPlast?'Silt of high plasticity':'Silt of low plasticity';}
+var grado;
+if(IP<4)grado='non-plastic';
+else if(IP<10)grado='low';
+else if(IP<=20)grado='medium';
+else grado='high';
+var advU=(IP>ipU)?' WARNING: point above U-line — verify test.':'';
+out.innerHTML='<span class="ok">PI = '+IP.toFixed(1)+' · '+simbolo+' ('+descripcion+')</span>'+
+'Plasticity '+grado+' (PI = '+IP.toFixed(1)+'). A-line: PI_A = '+ipA.toFixed(1)+' → point '+(sobreA?'above':'below')+' A-line.'+advU+'<br>'+
+'<span style="color:#64748b;font-size:.85em">Inputs: LL = '+LL.toFixed(1)+' · PL = '+LP.toFixed(1)+' · U-line = '+ipU.toFixed(1)+'</span>';
+});
+})();
+</script>
+
+<h2>Calculation example</h2>
+<table class="ejemplo">
+<caption>Input data — clay sample, subgrade in arid northern zone</caption>
+<thead><tr><th>Container</th><th>Blows (N)</th><th>Moisture content (w %)</th></tr></thead>
+<tbody>
+<tr><td>LL-1</td><td>35</td><td>43.2</td></tr>
+<tr><td>LL-2</td><td>26</td><td>45.8</td></tr>
+<tr><td>LL-3</td><td>18</td><td>48.4</td></tr>
+<tr><td>PL-1</td><td>—</td><td>22.6</td></tr>
+<tr><td>PL-2</td><td>—</td><td>23.2</td></tr>
+</tbody>
+</table>
+<p>Interpolating on a semi-logarithmic scale between the two points closest to 25 blows (N=26 and N=35): LL = 45.8 + (43.2 − 45.8) × (log 25 − log 26) / (log 35 − log 26) = 45.8 + (−2.6) × (−0.017 / 0.128) = 45.8 + 0.35 = 46.2 %. Rounding to the nearest integer, LL = 46. The average PL is (22.6 + 23.2) / 2 = 22.9 %, rounded PL = 23. Therefore PI = 46 − 23 = 23. With LL = 46 and PI = 23, the point lies above the A-line (0.73 × (46 − 20) = 19), so it is a CL clay of medium plasticity.</p>
+<p class="resultado"><strong>Result:</strong> LL = 46 · PL = 23 · PI = 23 — CL clay (medium plasticity).</p>
+
+<h2>Interpretation of results</h2>
+<p>CL with PI = 23 is a clay of medium plasticity: susceptible to moderate expansion, medium compressibility and low permeability. Requires strict moisture control during compaction (close to Proctor optimum). If LL had exceeded 50 it would be classified as CH (high plasticity) and would require more aggressive treatments. PI below the A-line shifts the classification to ML/MH (silts).</p>
+
+<h2>Reference standards</h2>
+<ul>
+<li>BS 1377-2 (+ BS EN ISO 17892-12) — Methods of test for soils for civil engineering purposes — Determination of liquid limit, plastic limit and plasticity index</li>
+<li>BS 5930 — Code of practice for ground investigations</li>
+<li>BS EN ISO 17892-12 — Geotechnical investigation and testing — Laboratory testing of soil — Determination of liquid and plastic limits</li>
+<li>AASHTO T 89 / T 90</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<details><summary>Can the Casagrande cup be replaced by the fall cone?</summary><p>Yes, the penetration cone (British / European method) is accepted by BS 1377-2 (+ BS EN ISO 17892-12) as an alternative. It gives very similar LL values but with lower inter-laboratory scatter. BS 5930 still favours the Casagrande cup in common regional practice.</p></details>
+<details><summary>What do I do if the soil cannot be rolled to 3.2 mm for the PL?</summary><p>It is reported as NP (non-plastic) and, by definition, PI is not calculable. This typically occurs in non-plastic silts (ML) and silty sands with inert fine fraction. In the BS 5930 classification it remains with PI &lt; 4 or unobtainable.</p></details>
+<details><summary>Why does a U-line exist on the Casagrande chart?</summary><p>It defines the practical upper limit: no natural soil should plot above the U-line (PI = 0.9 × (LL − 8)). If your point crosses it, there is a test error, contamination or artificial alteration (e.g., added bentonite).</p></details>
+<details><summary>How many points do I need for the multipoint LL method?</summary><p>BS 1377-2 (+ BS EN ISO 17892-12) recommends three or four points with N between 15 and 35. It is preferable to have at least one point above and one below 25 blows to interpolate, not extrapolate. The one-point method is accepted for quick work but has greater scatter.</p></details>
+
+<h2>Related calculators</h2>
+<ul>
+<li><a href="/">BS 5930 classification</a></li>
+<li><a href="/">AASHTO classification + Group Index</a></li>
+<li><a href="/">Complete particle size distribution curve</a></li>
+<li><a href="/">Sand equivalent (SE)</a></li>
+</ul>
+
+
+
+</article>
+
+
+<!-- AUTO-INTERNAL-LINKS -->
+<aside class="related-calcs" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px 24px;margin:32px auto;max-width:1100px;font-family:'Inter',sans-serif">
+  <h3 style="font-size:0.95rem;color:#1e3a5f;margin:0 0 12px;font-weight:700">Related Soil Classification Calculators</h3>
+  <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px 16px">
+      <li><a href="/" style="color:#0d9488;text-decoration:none;font-weight:500">AASHTO Classification and Group Index Calculator online</a></li>
+      <li><a href="/" style="color:#0d9488;text-decoration:none;font-weight:500">Particle Size Distribution Curve and Gradation Coefficients Calculator</a></li>
+      <li><a href="/" style="color:#0d9488;text-decoration:none;font-weight:500">BS 5930 Classification Calculator online free</a></li>
+  </ul>
+  <p style="font-size:0.8rem;color:#64748b;margin:14px 0 0">
+    More tools at <a href="/" style="color:#0d9488">Soil Classification</a> · Return to
+    <a href="/" style="color:#0d9488">Soil Mechanics Laboratory index</a>
+  </p>
+</aside>
+</article>
+</main>
+<footer>
+<div class="container">
+<div>
+<h4>Soil Mechanics Laboratory</h4>
+<p>Professional geotechnical services (United Kingdom).</p>
+<p class="footer-designer-credit">Site designed by geotechnical team</p>
+</div>
+<div>
+<h4>Contact</h4>
+<p>Email: <a href="mailto:contact@soilmechaniclaboratory.org">contact@soilmechaniclaboratory.org</a></p>
+</div>
+<div>
+<h4>Services</h4>
+<p><a href="/soil-mechanics-laboratory/">Soil Mechanics Laboratory</a><br><a href="/granulometry-atterberg/">Granulometry & Atterberg</a><br><a href="/proctor-cbr-testing/">Proctor & CBR Testing</a><br><a href="/triaxial-consolidation/">Triaxial & Consolidation</a></p>
+</div>
+<div>
+<h4>Legal</h4>
+<p><a href="/sitemap.xml">Sitemap</a></p>
+</div>
+<div class="copyr">© 2026 Soil Mechanics Laboratory</div>
+</div>
+</footer>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soilmechaniclaboratory.org/"}, {"@type": "ListItem", "position": 2, "name": "Atterberg Limits Calculator: LL, PL, PI and Casagrande Chart", "item": "https://soilmechaniclaboratory.org/blog/calculators/atterberg/"}]}, {"@type": "Article", "headline": "Atterberg Limits Calculator: LL, PL, PI and Casagrande Chart", "inLanguage": "en", "description": "Atterberg limits are the backbone of fine-grained soil classification. This calculator takes the (N, w) pairs from the Casagrande cup test to obtain the li", "url": "https://soilmechaniclaboratory.org/blog/calculators/atterberg/", "mainEntityOfPage": "https://soilmechaniclaboratory.org/blog/calculators/atterberg/", "publisher": {"@type": "Organization", "name": "Soil Mechanics Laboratory", "url": "https://soilmechaniclaboratory.org/"}}]}</script>
+</body>
+</html>

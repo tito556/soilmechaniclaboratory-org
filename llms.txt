@@ -1,0 +1,23 @@
+# Soil Mechanics Laboratory
+
+> National soil mechanics laboratory serving UK infrastructure projects. Geotechnical testing, site investigation, and engineering analysis for major urban
+
+Geotechnical engineering — soilmechaniclaboratory.org.
+
+## Pages
+
+- [Calculators](https://soilmechaniclaboratory.org/calculators/)
+- [Soil Mechanics Laboratory](https://soilmechaniclaboratory.org/soil-mechanics-laboratory/)
+- [Granulometry & Atterberg](https://soilmechaniclaboratory.org/granulometry-atterberg/)
+- [Proctor & CBR Testing](https://soilmechaniclaboratory.org/proctor-cbr-testing/)
+- [Triaxial & Consolidation](https://soilmechaniclaboratory.org/triaxial-consolidation/)
+- [Glasgow](https://soilmechaniclaboratory.org/soil-laboratory-in-glasgow/)
+- [Cardiff](https://soilmechaniclaboratory.org/soil-laboratory-in-cardiff/)
+- [Belfast](https://soilmechaniclaboratory.org/soil-laboratory-in-belfast/)
+- [London](https://soilmechaniclaboratory.org/soil-laboratory-in-london/)
+- [Bristol](https://soilmechaniclaboratory.org/soil-laboratory-in-bristol/)
+- [Birmingham](https://soilmechaniclaboratory.org/soil-laboratory-in-birmingham/)
+- [Manchester](https://soilmechaniclaboratory.org/soil-laboratory-in-manchester/)
+
+## Contact
+Email: contact@soilmechaniclaboratory.org?subject=Quote%20request%20%E2%80%94%20United%20Kingdom
